@@ -37,7 +37,7 @@ $(function(){
 
 $(function() {
     var hoverEvent = {
-        expansion: function(width, animateTimeout, fadeTimeout, hoverClass) {
+        expansion: _.debounce(function(width, animateTimeout, fadeTimeout, hoverClass) {
             $(this).animate({width: width}, animateTimeout, "linear");
             $(this).find('i').css("display", 'none');
             $(this).find('.opinion-text').css({
@@ -45,32 +45,32 @@ $(function() {
                 display: "inline-block"
             }).animate({opacity: 1}, fadeTimeout);
             $(".hover-active").css("display", "none").removeClass("hover-active");
-            $(hoverClass).fadeIn(fadeTimeout).addClass("hover-active");
-        },
+            $(hoverClass).addClass("hover-active").fadeIn(fadeTimeout);
+        }, 600, true),
 
-        contraction: function(width, animateTimeout, fadeTimeout, hoverClass) {
+        contraction: _.debounce(function(width, animateTimeout, fadeTimeout, hoverClass) {
             $(this).animate({width: width}, animateTimeout, "linear");
             $(this).find('i').fadeIn(fadeTimeout);
             $(this).find('.opinion-text').css("display", "none");
             $(hoverClass).css("display", "none").removeClass("hover-active");
-            $(".no-hover").fadeIn(fadeTimeout).addClass("hover-active");
-        }
+            $(".no-hover").addClass("hover-active").fadeIn(fadeTimeout);
+        }, 600, true)
     };
 
     $('.agree-box').mouseenter(function(event) {
-        hoverEvent.expansion.call(this, 130, 150, 800, ".agree-hover");
+        hoverEvent.expansion.call(this, 160, 150, 800, ".agree-hover");
         event.stopPropagation();
     });
     $('.agree-box').mouseleave(function(event) {
-        hoverEvent.contraction.call(this, 90, 150, 800, ".agree-hover");
+        hoverEvent.contraction.call(this, 100, 150, 800, ".agree-hover");
         event.stopPropagation();
     });
     $('.disagree-box').mouseenter(function(event) {
-        hoverEvent.expansion.call(this, 180, 150, 800, ".disagree-hover");
+        hoverEvent.expansion.call(this, 193, 150, 800, ".disagree-hover");
         event.stopPropagation();
     });
     $('.disagree-box').mouseleave(function(event) {
-        hoverEvent.contraction.call(this, 90, 150, 800, ".disagree-hover");
+        hoverEvent.contraction.call(this, 100, 150, 800, ".disagree-hover");
         event.stopPropagation();
     });
 });

@@ -115,7 +115,7 @@ a {
 
     .top-nav-collapse {
         padding: 0;
-        background-color: @dark;
+        background-color: @nav-bg;
     }
 
     .navbar-custom.top-nav-collapse {
@@ -267,7 +267,7 @@ a {
     }
     .agree-box {
         position: absolute;
-        min-width: 90px;
+        min-width: 100px;
         background: @agree;
         border-top-left-radius: 2px;
         border-bottom-left-radius: 2px;
@@ -278,7 +278,7 @@ a {
     }
     .disagree-box {
         position: absolute;
-        min-width: 90px;
+        min-width: 100px;
         background: @disagree;
         border-top-right-radius: 2px;
         border-bottom-right-radius: 2px;
@@ -295,7 +295,7 @@ a {
         padding-left: 15px;
     }
     .disagree-text {
-        padding-left: 55px;
+        padding-left: 65px;
     }
     .agree-num {
         position: absolute;
@@ -309,16 +309,34 @@ a {
     }
 }
 
-.download-section {
+.function-section {
     width: 100%;
     padding: 50px 0;
-    color: @light;
-    background: url(../img/downloads-bg.jpg) no-repeat center center scroll;
-    background-color: @dark;
+    color: @dark;
+    background-color: @light-bg;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    .function-part{
+        margin-top: 100px;
+    }
+}
+
+.download-section {
+    width: 100%;
+    padding: 50px 0;
+    color: @light;
+    background-color: @dark;
+    background: url(../img/downloads-bg.jpg) no-repeat bottom center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+#download {
+    padding-top: 0;
 }
 
 #map {
