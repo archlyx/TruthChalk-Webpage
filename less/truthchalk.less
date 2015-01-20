@@ -130,7 +130,7 @@ a {
     padding: 100px 0;
     text-align: center;
     color: @light;
-    background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;
+    background: url(../img/intro-bg.png) no-repeat bottom center scroll;
     background-color: @dark;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -155,7 +155,7 @@ a {
         padding: 0;
         .intro-body {
             .brand-heading {
-                font-size: 100px;
+                font-size: 80px;
             }
 
             .intro-text {
@@ -240,6 +240,73 @@ a {
 
 .content-section {
     padding-top: 100px;
+}
+
+.hover-box {
+    height: 200px;
+}
+.agree-hover {
+    display: none;
+    color: @agree;
+}
+
+.disagree-hover {
+    display: none;
+    color: @disagree;
+}
+
+.opinion-box {
+    line-height: 52px;
+    max-height: 52px;
+    min-width: 168px;
+    padding-top: 30px;
+    font-size: 22px;
+    white-space: nowrap;
+    span {
+        font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+    .agree-box {
+        position: absolute;
+        min-width: 90px;
+        background: @agree;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+        color: #333;
+        right: 50%;
+        text-align: left;
+        display: inline-block;
+    }
+    .disagree-box {
+        position: absolute;
+        min-width: 90px;
+        background: @disagree;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+        color: #fff;
+        left: 50%;
+        text-align: left;
+        display: inline-block;
+    }
+    .opinion-text {
+        display: none;
+        font-weight: 700;
+    }
+    .agree-text {
+        padding-left: 15px;
+    }
+    .disagree-text {
+        padding-left: 55px;
+    }
+    .agree-num {
+        position: absolute;
+        right: 20px;
+        text-align: right;
+    }
+    .disagree-num {
+        position: absolute;
+        left: 15px;
+        text-align: left;
+    }
 }
 
 .download-section {

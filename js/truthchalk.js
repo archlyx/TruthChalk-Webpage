@@ -29,6 +29,52 @@ $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
 
+$(function(){
+    var date = new Date();
+    $('.agree-num').text(date.getMonth() + 1);
+    $('.disagree-num').text(date.getDate());
+});
+
+$(function() {
+    var hoverEvent = {
+        expansion: function(width, animateTimeout, fadeTimeout, hoverClass) {
+            $(this).animate({width: width}, animateTimeout, "linear");
+            $(this).find('i').css("display", 'none');
+            $(this).find('.opinion-text').css({
+                opacity: 0,
+                display: "inline-block"
+            }).animate({opacity: 1}, fadeTimeout);
+            $(".hover-active").css("display", "none").removeClass("hover-active");
+            $(hoverClass).fadeIn(fadeTimeout).addClass("hover-active");
+        },
+
+        contraction: function(width, animateTimeout, fadeTimeout, hoverClass) {
+            $(this).animate({width: width}, animateTimeout, "linear");
+            $(this).find('i').fadeIn(fadeTimeout);
+            $(this).find('.opinion-text').css("display", "none");
+            $(hoverClass).css("display", "none").removeClass("hover-active");
+            $(".no-hover").fadeIn(fadeTimeout).addClass("hover-active");
+        }
+    };
+
+    $('.agree-box').mouseenter(function(event) {
+        hoverEvent.expansion.call(this, 130, 150, 800, ".agree-hover");
+        event.stopPropagation();
+    });
+    $('.agree-box').mouseleave(function(event) {
+        hoverEvent.contraction.call(this, 90, 150, 800, ".agree-hover");
+        event.stopPropagation();
+    });
+    $('.disagree-box').mouseenter(function(event) {
+        hoverEvent.expansion.call(this, 180, 150, 800, ".disagree-hover");
+        event.stopPropagation();
+    });
+    $('.disagree-box').mouseleave(function(event) {
+        hoverEvent.contraction.call(this, 90, 150, 800, ".disagree-hover");
+        event.stopPropagation();
+    });
+});
+
 // Google Maps Scripts
 // When the window has finished loading create our google map below
 google.maps.event.addDomListener(window, 'load', init);
